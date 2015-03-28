@@ -1,0 +1,29 @@
+
+    <div class="col-sm-9">
+        <div class="panel panel-default">
+            <!--<div class="panel-heading">-->
+                <!--Edit {{news.title}}-->
+            <!--</div>-->
+            <div class="panel-body">
+
+                <form role="form" ng-submit="submitCreateForm()">
+
+                    <div class="form-group">
+                        <label>Title of book : </label>
+                        <input class="form-control" ng-model='formData.title'>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Small description : </label>
+                        <textarea class="form-control" rows="4" ng-model="formData.intro"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Description : </label>
+                        <textarea class="form-control" rows="10" name="editor1" id="editor1" ng-model="formData.description"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit Button</button>
+                    <a href="#books" ng-click="cancelCreate()" class="btn btn-default">Cancel Button</a>
+                </form>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,36 @@
+
+<div class="col-sm-9">
+    <div class="panel panel-default">
+        <!--<div class="panel-heading">-->
+        <!--Edit {{news.title}}-->
+        <!--</div>-->
+        <div class="panel-body">
+
+            <form role="form" ng-submit="submitCreateForm()" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label>Title of homework : </label>
+                    <input class="form-control" ng-model='formData.title'>
+                </div>
+
+                <div class="form-group">
+                    <label> description : </label>
+                    <textarea class="form-control" rows="4" ng-model="formData.description"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="alert-danger">{{Errorss}}</p>
+                    <label>file : </label>
+                    <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+                    <span class="glyphicon glyphicon-refresh spinning" ng-show="loading"></span>
+                    <span ng-show="loading" >Uploading...</span>
+
+                    <span class="alert-success">{{messageSuccess}}</span>
+
+
+                </div>
+                <button type="submit" class="btn btn-default">Submit Button</button>
+                <button ng-click="cancelCreate()" class="btn btn-default">Cancel Button</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="col-sm-12">
+        <div ng-show="{{success.show}}"  class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{success.msg}}
+        </div>
+
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <a style="margin-bottom: 1.2em;" href="#/news/create" class="btn btn-primary btn-lg"><i class="icon-white icon-folder-open"></i> Add new news</a>
+                        </div>
+                        <div id="delete" class="active col-sm-2">
+                            <a href="" class="form-control  btn btn-danger btn-sm" ng-click="deleteAll()">Delete</a>
+                        </div>
+                        <div id="active" class="active col-sm-2">
+                            <a href="" class="form-control  btn btn-success btn-sm" ng-click="activeAll()">Active</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6" id="" style="margin-bottom: .5em" >
+                            <label>
+                                <select name="item"  class="form-control input-sm" ng-model="itemSelected">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>records per page
+                            </label>
+                        </div>
+
+                        <div id="filter" class="filter pull-right col-sm-3" >
+                            <label>Search:<input type="search" class="form-control input-sm" ng-model="itemFilter"></label>
+                        </div>
+                    </div>
+
+                    <thead>
+                    <tr>
+                        <th width="1%">
+                            <input type="checkbox" name="checkall-toggle" value="" onclick="checkAll(this)">
+                        </th>
+                        <th ng-click="sort('title')">Title
+                            <span ng-show='order === "title" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                            <span ng-show='order === "title" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                        </th>
+                        <th ng-click="sort('intro')">Small Description
+                            <span ng-show='order === "intro" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                            <span ng-show='order === "intro" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                        </th>
+                        <th ng-click="sort('description')">Complete Description
+                            <span ng-show='order === "description" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                            <span ng-show='order === "description" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                        </th>
+                        <th ng-click="sort('created_at')">Created at
+                            <span ng-show='order === "created_at" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                            <span ng-show='order === "created_at" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                        </th>
+                        <th ng-click="sort('updated_at')">Updated at
+                            <span ng-show='order === "updated_at" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                            <span ng-show='order === "updated_at" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                        </th>
+                        <th ng-click="sort('active')">Active
+                            <span ng-show='order === "active" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                            <span ng-show='order === "active" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                        </th>
+                        <th style="text-align: center">Action</th>
+                    </tr>
+
+                    </thead>
+                    <tbody >
+                    <!--@foreach($packages->all() as $i=>$package)-->
+                    <tr ng-repeat="(index,new) in news | filter:itemFilter | orderBy:order:reverse | limitTo:itemSelected | checkBoxFn "  >
+                        <td class="center" >
+                            <input type="checkbox" id="cb0" name="cid[]" ng-change="selectedSongs()" ng-model="new.checked" title="Checkbox for row {{index + 1}} ">
+                        </td>
+                        <td>{{new.title | limitTo:20}}</td>
+                        <td>{{new.intro | limitTo:25}}.....</td>
+                        <td>{{new.description | limitTo:45}}.....</td>
+                        <td>{{new.created_at }}</td>
+                        <td>{{new.updated_at }}</td>
+                        <td style="text-align: center" class="input-sm">
+
+                            <span ng-click="active(new.id)" ng-model="new.active"  class="{{ new.active == 1 ? 'btn btn-success btn-circle' : 'btn btn-danger btn-circle'}}">
+                                <i class="{{ new.active == 1 ? 'fa fa-check' : 'fa fa-times'}}"></i>
+                            </span>
+                            <span style="visibility: hidden">{{new.active}}</span>
+                        </td>
+                        <td  class="input-lg">
+                            <a style="float: left;margin-right: .5em;" href="{{'/admin/latest/#/news/'+ new.id}}" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> Edit</a>
+                            <span  ng-click="deleteItem(new.id)" class="btn btn-danger btn-mini"><i class="icon-white icon-heart"></i> Delete</span>
+                            <!--{{--{{Form::open(['url'=>'admin/packages'.'/'."$package->id",'method'=>'Delete'])}}--}}-->
+                            <!--{{--<input style="float: left;margin-right: 1em;" type="submit" class="btn btn-danger btn-mini" value="Delete" onclick="return window.confirm('Are you Sure you want to delete this item?')"/>--}}-->
+                            <!--{{--{{Form::close()}}--}}-->
+                        </td>
+                        <!--<td>{{new.checkbox}}</td>-->
+
+                    </tr>
+                    <!--@endforeach-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+</div>

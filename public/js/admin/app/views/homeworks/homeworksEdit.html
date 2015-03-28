@@ -1,0 +1,46 @@
+
+    <div class="col-sm-9">
+        <div class="panel panel-default">
+            <!--<div class="panel-heading">-->
+                <!--Edit {{news.title}}-->
+            <!--</div>-->
+            <div class="panel-body">
+
+                <form role="form" ng-submit="submitForm()">
+
+                    <div class="form-group">
+                        <label>Title : </label>
+                        <input class="form-control" ng-model='homeworks.title' value="{{homeworks.title}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Description : </label>
+                        <textarea class="form-control" rows="10" name="editor1" id="editor1" ng-model="homeworks.description">{{homeworks.description}}</textarea>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-4" >
+                            <p style="padding: 1em;background-color: #e4b9b9;position: relative">
+                                Your uploaded file : <a href="{{'../../'+homeworks.file}}">{{homeworks.file}}</a>
+                                <!--<span ng-click="deleteUpload()" style="display:inline-block;position: absolute;top: 0;right: 0;cursor: pointer">-->
+                                    <!--<i class="glyphicon glyphicon-remove-circle"></i>-->
+                                <!--</span>-->
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="alert-danger">{{Errorss}}</p>
+                        <label>file : </label>
+                        <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+                        <span class="glyphicon glyphicon-refresh spinning" ng-show="loading"></span>
+                        <span ng-show="loading" >Uploading...</span>
+
+                        <span class="alert-success">{{messageSuccess}}</span>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-default">Submit Button</button>
+                    <span ng-click="cancelEdit()" class="btn btn-default">Cancel Button</span>
+                </form>
+            </div>
+        </div>
+    </div>

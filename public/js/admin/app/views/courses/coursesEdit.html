@@ -1,0 +1,31 @@
+
+    <div class="col-sm-9">
+        <div class="panel panel-default">
+            <!--<div class="panel-heading">-->
+                <!--Edit {{news.title}}-->
+            <!--</div>-->
+            <div class="panel-body">
+
+                <form role="form" ng-submit="submitForm()">
+
+                    <div class="form-group">
+                        <label>Title of Book : </label>
+                        <span>{{courses.title}}</span>
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group col-sm-3">
+                            <label>Year : </label>
+                            <input type="text" class="form-control" ng-model="courses.year"/>
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label>Semester : </label>
+                            <input type="text" class="form-control" ng-model="courses.semester"/>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit Button</button>
+                    <a href="#courses" ng-click="cancelEdit()" class="btn btn-default">Cancel Button</a>
+                </form>
+            </div>
+        </div>
+    </div>

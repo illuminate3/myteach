@@ -1,0 +1,11 @@
+APP_ENV=local
+APP_DEBUG=true
+APP_KEY=JhnhUcvsjpp6YixE7kj3sjHONWZCQcuF
+
+DB_HOST=localhost
+DB_DATABASE=teacher
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+
+CACHE_DRIVER=file
+SESSION_DRIVER=file

@@ -1,0 +1,146 @@
+<div class="col-sm-12" style="margin-bottom: 4em;border-bottom: 2px dashed #e3e3e3">
+    <div ng-show="success.show"  class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        {{success.msg}}
+    </div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-sm-6 ">
+                <label>Select Course : </label>
+                <select name="exams" id="exams" ng-model="courseSelected" class="form-control" ng-change="courseChange()">
+                    <option ng-repeat="course in courses | orderBy:'year':true" value="{{course.id}}">{{course.title}}-{{course.year}}-{{course.semester}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<input pickadate ng-model="date" min-date="'2014-11-10'"/>-->
+<div class="row col-sm-12" ng-show="showExam">
+    <div class="row" >
+        <div class="col-sm-9 col-sm-offset-1" style="border: #e3e3e3 dashed;margin-bottom: 2em ">
+            <form role="form" ng-submit="submitCreatedForm()">
+                <div class="row" style="padding: 1em;position: relative">
+                    <div class="form-group col-sm-3">
+                        <label>Title :   </label>
+                        <input class="form-control input-sm" ng-model='formData.title' ng-required="true">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label>High Score :   </label>
+                        <input class="form-control input-sm" ng-model='formData.high_score' ng-required="true">
+                    </div>
+                    <div class="form-group col-sm-3" style="position: relative">
+                        <label> Date : </label>
+                        <input pickadate  style="position: relative" class="form-control input-sm"  ng-model="formData.date" min-date="'2014-11-10'"/>
+                    </div>
+                    <div class="col-sm-3" style="margin-top: 1.4em">
+                        <!--<label> Add : </label>-->
+                        <button type="submit"  class="btn btn-primary">Add Exam</button>
+                    </div>
+                </div>
+                <p ng-show="errorMsgShow" style="padding: 1em;background-color: #e4b9b9;position: relative;font-weight: bold">{{errorMsg}}</p>
+
+            </form>
+        </div>
+    </div>
+<div class="panel panel-info" >
+    <div class="table-responsive panel-body">
+        <table class="table table-striped table-bordered table-hover">
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <!--<button class="btn btn-primary btn-lg" ng-click="createStudent()"><i class="icon-white icon-folder-open"></i> Add new Student</button>-->
+                </div>
+                <div id="delete" class="active col-sm-2">
+                    <a href="" class="form-control  btn btn-danger btn-sm" ng-click="deleteAll()">Delete</a>
+                </div>
+                <div id="active" class="active col-sm-2">
+                    <a href="" class="form-control  btn btn-success btn-sm" ng-click="activeAll()">Active</a>
+                </div>
+            </div>
+
+            <div class="row" style="padding: .5em">
+                <div class="col-sm-6" id="" style="margin-bottom: .5em " >
+                    <label>
+                        <select name="item"  class="form-control input-sm" ng-model="itemSelected">
+                            <option value="100" selected="selected">100</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="200">200</option>
+                        </select>records per page
+                    </label>
+                </div>
+
+                <div id="filter" class="filter pull-right col-sm-3" >
+                    <label>Search:<input type="search" class="form-control input-sm" ng-model="itemFilter"></label>
+                </div>
+            </div>
+
+
+            <thead>
+            <tr>
+                <th width="1%">
+                    <input type="checkbox" name="checkall-toggle" value="" onclick="checkAll(this)">
+                </th>
+                <th ng-click="sort('title')">Title
+                    <span ng-show='order === "title" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show='order === "title" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                </th>
+                <th ng-click="sort('date')">Exam's Date
+                    <span ng-show='order === "date" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show='order === "date" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                </th>
+                <th style="text-align: center" ng-click="sort('high_score')">High Score
+                    <span ng-show='order === "high_score" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show='order === "high_score" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                </th>
+                <th ng-click="sort('created_at')">Created at
+                    <span ng-show='order === "created_at" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show='order === "created_at" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                </th>
+                <th ng-click="sort('active')">Active
+                    <span ng-show='order === "active" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show='order === "active" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                </th>
+                <th style="text-align: center">Grades</th>
+                <th style="text-align: center">Action</th>
+            </tr>
+
+            </thead>
+            <tbody >
+            <!--@foreach($packages->all() as $i=>$package)-->
+            <tr ng-repeat="(index,exam) in exams | filter:itemFilter | orderBy:order:reverse | limitTo:itemSelected | checkBoxFn "  >
+                <td class="center" >
+                    <input type="checkbox" id="cb0" name="cid[]" ng-change="selectedItems()" ng-model="exam.checked" title="Checkbox for row {{index + 1}} ">
+                </td>
+                <td>{{exam.title | limitTo:45}}</td>
+                <td>{{exam.date  }}</td>
+                <td style="text-align: center">{{exam.high_score  }}</td>
+                <td>{{exam.created_at }}</td>
+                <td style="text-align: center" class="input-sm">
+                            <span ng-click="active(exam.id)" ng-model="exam.active"  class="{{ exam.active == 1 ? 'btn btn-success btn-circle' : 'btn btn-danger btn-circle'}}">
+                                <i class="{{ exam.active == 1 ? 'fa fa-check' : 'fa fa-times'}}"></i>
+                            </span>
+                    <span style="visibility: hidden">{{exam.active}}</span>
+                </td>
+                <td style="text-align: center">
+                    <a  href="{{'#/exams/grades/'+ exam.course_id +'/'+exam.id}}" class="btn btn-info btn-mini"><i class="icon-white icon-heart"></i> Grades</a>
+                </td>
+                <td >
+                    <a style="float: left;margin-right: .5em;" href="{{'#/exams/edit/'+ exam.id}}" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> Edit</a>
+                    <span  ng-click="deleteItem(exam.id)" class="btn btn-danger btn-mini"><i class="icon-white icon-heart"></i> Delete</span>
+                    <!--{{--{{Form::open(['url'=>'admin/packages'.'/'."$package->id",'method'=>'Delete'])}}--}}-->
+                    <!--{{--<input style="float: left;margin-right: 1em;" type="submit" class="btn btn-danger btn-mini" value="Delete" onclick="return window.confirm('Are you Sure you want to delete this item?')"/>--}}-->
+                    <!--{{--{{Form::close()}}--}}-->
+                </td>
+                <!--<td>{{exam.checkbox}}</td>-->
+
+            </tr>
+            <!--@endforeach-->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</div>

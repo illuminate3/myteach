@@ -1,0 +1,33 @@
+
+<div  >
+    <div class="row" style="color: blueviolet;margin: 1.2em">
+        <p>Each student grade   ----------->  $grade</p>
+        <p>Each student name    ----------->  $name</p>
+        <p>Each student family  ----------->  $family</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+
+            <form  ng-submit="sendGradeEmail(exam_id)" action="">
+                <label for="title">
+                    <p style="color: darkred">Write your eamil title : </p>
+                </label>
+
+                <input type="text" class="input-lg form-control" name="title" id="title" ng-model="title" ng-required="true" style="margin-bottom: 1em"  />
+
+                <label for="textarea">
+                    <p style="color: darkred"> Write your email message : </p>
+                </label>
+
+                <div class="form-group">
+                    <textarea  name="textarea" ng-model="description" id="textarea" cols="48" rows="10" ng-required="true" placeholder="Hi $name $family Your grade is $grade ."  >
+
+                    </textarea>
+                </div>
+
+                <button type="submit" class="btn btn-lg"> Send Email</button>
+            </form>
+        </div>
+</div>
+
+</div>
