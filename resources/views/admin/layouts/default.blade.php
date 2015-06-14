@@ -13,6 +13,7 @@
     <link href="{{asset('css/admin/plugins/metisMenu.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/admin/plugins/dataTables.bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/admin/sb-admin.css')}}" rel="stylesheet">
+    <link href="{{asset('css/angular-chart.css')}}" rel="stylesheet">
     @yield('css')
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -63,6 +64,9 @@
     <script src="{{asset('js/angular-route.min.js')}}"></script>
     <script src="{{asset('js/angular-pickadate.min.js')}}"></script>
     <script src="{{asset('js/ngDialog.min.js')}}"></script>
+    <script src="{{asset('js/Chart.min.js')}}"></script>
+    <script src="{{asset('js/angular-chart.min.js')}}"></script>
+
 
 {{--    <script src="{{asset('js/angular-file-upload.min.js')}}"></script>--}}
 

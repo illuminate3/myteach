@@ -25,6 +25,7 @@
     <script src="{{asset('js/admin/app/services/studentsFactory.js')}}"></script>
     <script src="{{asset('js/admin/app/controller/studentsController.js')}}"></script>
     <script src="{{asset('js/admin/app/controller/studentsEditController.js')}}"></script>
+    <script src="{{asset('js/admin/app/controller/studentsPlotController.js')}}"></script>
     <script src="{{asset('js/tinymce/js/tinymce/tinymce.min.js')}}"></script>
     <script src="{{asset('js/admin/tinyeditor.js')}}"></script>
 @endsection

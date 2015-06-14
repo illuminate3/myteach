@@ -19,7 +19,7 @@ class CreateExamsTable extends Migration {
             $table->string('title',150);
             $table->date('date');
             $table->tinyInteger('high_score');
-            $table->tinyInteger('active');
+            $table->tinyInteger('active')->default(1);
 			$table->timestamps();
 		});
 	}

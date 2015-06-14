@@ -3,7 +3,7 @@ angular.module('teacherApp')
     .controller('coursesController',function($scope,$http,coursesFactory,messageFactory,$filter){
         $scope.courses = [];
         $scope.order = 'created_at';
-        $scope.reverse = false;
+        $scope.reverse = true;
         $scope.itemSelected='10';
         function init(){
             coursesFactory.getCourses()

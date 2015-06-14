@@ -54,6 +54,7 @@ Route::group(array('prefix' => 'admin'/*,'before'=>'AdminFilter'*/),function(){
     Route::get('/students/active/{id}', 'AdminStudentsController@active');
     Route::post('/students/activeAll', 'AdminStudentsController@activeAll');
     Route::post('/students/deleteAll', 'AdminStudentsController@deleteAll');
+    Route::get('/students/grades/{id}', 'AdminStudentsController@grades');
     Route::resource('/students','AdminStudentsController');
     Route::get('/students', 'AdminStudentsController@pages');
 
@@ -61,6 +62,7 @@ Route::group(array('prefix' => 'admin'/*,'before'=>'AdminFilter'*/),function(){
     Route::get('/exams/active/{id}', 'AdminExamsController@active');
     Route::post('/exams/activeAll', 'AdminExamsController@activeAll');
     Route::post('/exams/deleteAll', 'AdminExamsController@deleteAll');
+    Route::get('/exams/grades/{id}', 'AdminExamsController@gradesPlot');
     Route::resource('/exams','AdminExamsController');
     Route::get('/exams', 'AdminExamsController@pages');
 

@@ -1,0 +1,51 @@
+
+<div class="col-sm-12">
+    <div class="panel panel-default">
+        <!--<div class="panel-heading">-->
+        <!--Edit {{news.title}}-->
+        <!--</div>-->
+        <div class="panel-heading">
+            <h3 class="text-info "><strong>{{ student.name + '-'  + student.family + '\'s' + ' exams and grades'}} </strong><mark> <strong> {{exams.title}} </strong> </mark>  </h3>
+            <h4>Lesson Of Exam : <mark>{{plotData[0].exams.course.book.title}}</mark></h4>
+            <!--<p class="text-info"><strong>Exam's Lesson Title : </strong><mark> <strong> {{exams.course.book.title}} </strong> </mark>  </p>-->
+            <!--<p class="text-info">-->
+                <!--<strong>Max Grade : </strong><mark> <strong> {{exams.high_score}}</strong> </mark>-->
+                <!--<strong>Exam's Date : </strong><mark> {{exams.date}}</mark>-->
+
+                <!--<strong>Semester : </strong><mark> {{exams.course.semester}}</mark>-->
+            <!--</p>-->
+        </div>
+        <div class="panel-body" ng-if="plotData.length > 0">
+            <!--<div ng-if="average" style="margin: .5em 0 2em 0 ;">-->
+                <!--<strong class="text-warning">Exam's Average grade is : {{average}}</strong>-->
+            <!--</div>-->
+            <canvas id="line" class="chart chart-line" data="data"
+                    labels="labels" legend="true" series="series" options="{bezierCurve : false}"
+                    click="onClick">
+            </canvas>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div class="col-sm-12" style="margin: 2em 0 4em 0;">
+
+    <table class="table table-striped">
+        <thead>
+            <th>Exam's Date </th>
+            <th>Exam's Title </th>
+            <th>Exam Max Grade </th>
+            <th>Student's Grade </th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="exam in plotData">
+                <td class="danger">{{exam.exams.date}}</td>
+                <td class="warning">{{exam.exams.title}}</td>
+                <td class="info text-center">{{exam.exams.high_score}}</td>
+                <td class="danger text-center">{{exam.grade}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

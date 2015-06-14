@@ -82,11 +82,9 @@
                         <span style="visibility: hidden">{{course.active}}</span>
                     </td>
                     <td>
-                        <a style="float: left;margin-right: .5em;" href="{{'/admin/courses/#/courses/'+ course.id}}" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> Edit</a>
+                        <a href="{{'/admin/courses/#/courses/'+ course.id}}" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> Edit</a>
                         <span  ng-click="deleteItem(course.id)" class="btn btn-danger btn-mini"><i class="icon-white icon-heart"></i> Delete</span>
-                        <!--{{--{{Form::open(['url'=>'admin/packages'.'/'."$package->id",'method'=>'Delete'])}}--}}-->
-                        <!--{{--<input style="float: left;margin-right: 1em;" type="submit" class="btn btn-danger btn-mini" value="Delete" onclick="return window.confirm('Are you Sure you want to delete this item?')"/>--}}-->
-                        <!--{{--{{Form::close()}}--}}-->
+                        <!--<a href="{{'/admin/courses/#/coursesPlots/'+ course.id}}" class="btn btn-warning btn-mini"><i class="icon-white icon-heart"></i> Plot</a>-->
                     </td>
                     <!--<td>{{course.checkbox}}</td>-->
 

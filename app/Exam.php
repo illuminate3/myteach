@@ -32,5 +32,11 @@ class Exam extends Model {
         return $this->belongsTo('App\Course');
     }
 
+    public function exam_student(){
+        return $this->hasMany('App\Exam_Student');
+    }
+
+
+
 
 }

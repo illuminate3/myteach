@@ -1,5 +1,5 @@
 
-var teacherApp = angular.module('teacherApp',['ngRoute','pickadate','ngDialog'])
+var teacherApp = angular.module('teacherApp',['ngRoute','pickadate','ngDialog','chart.js'])
         .config(function($routeProvider){
             $routeProvider
                 .when('/news',
@@ -49,7 +49,12 @@ var teacherApp = angular.module('teacherApp',['ngRoute','pickadate','ngDialog'])
                 .when('/courses/:itemId',
                 {
                     controller:'coursesEditController',
-                    templateUrl:'/js/admin/app/views/courses/homeworksEdit.html'
+                    templateUrl:'/js/admin/app/views/courses/coursesEdit.html'
+                })
+                .when('/coursesPlots/:itemId',
+                {
+                    controller:'coursesPlotController',
+                    templateUrl:'/js/admin/app/views/courses/coursesPlot.html'
                 })
                 .when('/homeworks',
                 {
@@ -90,6 +95,12 @@ var teacherApp = angular.module('teacherApp',['ngRoute','pickadate','ngDialog'])
                     templateUrl:'/js/admin/app/views/students/studentsEdit.html',
                     foodata: 'course_id'
                 })
+                .when('/students/plot/:itemId',
+                {
+                    controller:'studentsPlotController',
+                    templateUrl:'/js/admin/app/views/students/studentsPlot.html',
+                    foodata: 'course_id'
+                })
                 .when('/exams',
                 {
                     controller:'examsController',
@@ -105,6 +116,12 @@ var teacherApp = angular.module('teacherApp',['ngRoute','pickadate','ngDialog'])
                 {
                     controller:'examsEditController',
                     templateUrl:'/js/admin/app/views/exams/examsEdit.html',
+                    foodata: 'course_id'
+                })
+                .when('/exams/plot/:itemId',
+                {
+                    controller:'examsPlotController',
+                    templateUrl:'/js/admin/app/views/exams/examsPlot.html',
                     foodata: 'course_id'
                 })
                 .when('/exams/grades/:courseId/:examId',

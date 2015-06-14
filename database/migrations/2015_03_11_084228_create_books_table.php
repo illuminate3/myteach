@@ -18,7 +18,7 @@ class CreateBooksTable extends Migration {
             $table->string('title');
             $table->string('intro');
             $table->text('description');
-            $table->tinyInteger('active');
+            $table->tinyInteger('active')->default(1);
 			$table->timestamps();
 		});
 	}

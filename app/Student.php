@@ -28,4 +28,8 @@ class Student extends Model {
         return $this->belongsToMany('App\Exam')->withPivot('grade');
     }
 
+    public function exam_student(){
+        return $this->hasMany('App\Exam_Student');
+    }
+
 }

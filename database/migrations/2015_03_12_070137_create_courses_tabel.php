@@ -18,7 +18,7 @@ class CreateCoursesTabel extends Migration {
             $table->integer('book_id');
             $table->mediumInteger('year');
             $table->string('semester','40');
-            $table->tinyInteger('active');
+            $table->tinyInteger('active')->default(1);
 			$table->timestamps();
 		});
 	}

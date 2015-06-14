@@ -9,7 +9,7 @@
             <div class="col-sm-6 ">
                 <label>Select Course : </label>
                 <select name="exams" id="exams" ng-model="courseSelected" class="form-control" ng-change="courseChange()">
-                    <option ng-repeat="course in courses | orderBy:'year':true" value="{{course.id}}">{{course.title}}-{{course.year}}-{{course.semester}}</option>
+                    <option ng-repeat="course in courses | orderBy:'year':true" value="{{course.id}}" ng-selected="course.id == courseSelected ? 'selected' : ''">{{course.title}}-{{course.year}}-{{course.semester}}</option>
                 </select>
             </div>
         </div>
@@ -128,8 +128,9 @@
                     <a  href="{{'#/exams/grades/'+ exam.course_id +'/'+exam.id}}" class="btn btn-info btn-mini"><i class="icon-white icon-heart"></i> Grades</a>
                 </td>
                 <td >
-                    <a style="float: left;margin-right: .5em;" href="{{'#/exams/edit/'+ exam.id}}" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> Edit</a>
+                    <a style="" href="{{'#/exams/edit/'+ exam.id}}" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> Edit</a>
                     <span  ng-click="deleteItem(exam.id)" class="btn btn-danger btn-mini"><i class="icon-white icon-heart"></i> Delete</span>
+                    <a style="" href="{{'#/exams/plot/'+ exam.id}}" class="btn btn-warning btn-mini"><i class="icon-white icon-heart"></i> Plot</a>
                     <!--{{--{{Form::open(['url'=>'admin/packages'.'/'."$package->id",'method'=>'Delete'])}}--}}-->
                     <!--{{--<input style="float: left;margin-right: 1em;" type="submit" class="btn btn-danger btn-mini" value="Delete" onclick="return window.confirm('Are you Sure you want to delete this item?')"/>--}}-->
                     <!--{{--{{Form::close()}}--}}-->

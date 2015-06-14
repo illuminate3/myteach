@@ -133,7 +133,7 @@ angular.module('teacherApp')
             family: "",
             email: ""
         };
-        resetFormdata = function(){
+        var resetFormdata = function(){
             $scope.formData.name='';
             $scope.formData.family='';
             $scope.formData.email='';

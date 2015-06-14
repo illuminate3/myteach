@@ -31,6 +31,7 @@
     <script src="{{asset('js/admin/app/services/studentsFactory.js')}}"></script>
     <script src="{{asset('js/admin/app/controller/examsController.js')}}"></script>
     <script src="{{asset('js/admin/app/controller/examsEditController.js')}}"></script>
+    <script src="{{asset('js/admin/app/controller/examsPlotController.js')}}"></script>
     <script src="{{asset('js/admin/app/controller/examsGradesController.js')}}"></script>
     <script src="{{asset('js/tinymce/js/tinymce/tinymce.min.js')}}"></script>
     <script src="{{asset('js/admin/tinyeditor.js')}}"></script>

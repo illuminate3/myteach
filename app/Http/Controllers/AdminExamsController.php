@@ -53,7 +53,7 @@ class AdminExamsController extends Controller {
 	 */
 	public function show($id)
 	{
-        return Exam::findOrfail($id);
+        return Exam::with('course','course.book')->findOrfail($id);
 	}
 
 	/**
@@ -111,6 +111,11 @@ class AdminExamsController extends Controller {
     public function deleteAll(){
         $inputs = (Request::all());
         return Exam::deleteAll($inputs);
+    }
+
+    public function gradesPlot($id){
+        $exam = Exam::findOrFail($id);
+        return $exam->exam_student()->wherePresent(0)->with('students')->orderBy('grade','desc')->get();//with('students')->get();
     }
 
 }

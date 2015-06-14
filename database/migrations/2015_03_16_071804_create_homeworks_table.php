@@ -19,7 +19,7 @@ class CreateHomeworksTable extends Migration {
 			$table->string('title');
 			$table->text('description');
 			$table->string('file',64);
-            $table->tinyInteger('active');
+            $table->tinyInteger('active')->default(1);
 			$table->timestamps();
 		});
 	}

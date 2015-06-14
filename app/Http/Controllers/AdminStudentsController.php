@@ -128,4 +128,10 @@ class AdminStudentsController extends Controller {
 //            ->get();
     }
 
+    public function grades($id){
+
+        $student = Student::findOrFail($id);
+        return $student->exam_student()->wherePresent(0)->with('exams','exams.course.book')->orderBy('created_at')->get();//with('students')->get();
+    }
+
 }

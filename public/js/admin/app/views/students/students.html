@@ -9,7 +9,7 @@
             <div class="col-sm-6 ">
                 <label>Select Course : </label>
                 <select name="students" id="students" ng-model="courseSelected" class="form-control" ng-change="courseChange()">
-                    <option ng-repeat="course in courses | orderBy:'year':true" value="{{course.id}}">{{course.title}}-{{course.year}}-{{course.semester}}</option>
+                    <option ng-repeat="course in courses | orderBy:'year':true" ng-selected="course.id == courseSelected ? 'selected' : ''" value="{{course.id}}">{{course.title}}-{{course.year}}-{{course.semester}}</option>
                 </select>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <div class="row" style="padding: 1em;position: relative">
                     <div class="form-group col-sm-2">
                         <label>Name :   </label>
-                        <input class="form-control input-sm" ng-model='formData.title' ng-required="true">
+                        <input class="form-control input-sm" ng-model='formData.name' ng-required="true">
                     </div>
                     <div class="form-group col-sm-3">
                         <label> Family : </label>
@@ -125,8 +125,9 @@
                     <span style="visibility: hidden">{{student.active}}</span>
                 </td>
                 <td>
-                    <a style="float: left;margin-right: .5em;" href="{{'#/students/edit/'+ student.id}}" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> Edit</a>
+                    <a href="{{'#/students/edit/'+ student.id}}" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> Edit</a>
                     <span  ng-click="deleteItem(student.id)" class="btn btn-danger btn-mini"><i class="icon-white icon-heart"></i> Delete</span>
+                    <a href="{{'#/students/plot/'+ student.id}}" class="btn btn-warning btn-mini"><i class="icon-white icon-heart"></i> Plot</a>
                     <!--{{--{{Form::open(['url'=>'admin/packages'.'/'."$package->id",'method'=>'Delete'])}}--}}-->
                     <!--{{--<input style="float: left;margin-right: 1em;" type="submit" class="btn btn-danger btn-mini" value="Delete" onclick="return window.confirm('Are you Sure you want to delete this item?')"/>--}}-->
                     <!--{{--{{Form::close()}}--}}-->

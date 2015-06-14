@@ -19,7 +19,7 @@ class CreateStudentsTable extends Migration {
             $table->string('name',50);
             $table->string('family',50);
             $table->string('email',50);
-            $table->tinyInteger('active');
+            $table->tinyInteger('active')->default(1);
             $table->unique( array('email','course_id') );
 			$table->timestamps();
 		});
