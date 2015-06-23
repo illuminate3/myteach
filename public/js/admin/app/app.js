@@ -1,5 +1,5 @@
 
-var teacherApp = angular.module('teacherApp',['ngRoute','pickadate','ngDialog','chart.js'])
+var teacherApp = angular.module('teacherApp',['ngRoute','pickadate','ngDialog','chart.js','ui.tinymce'])
         .config(function($routeProvider){
             $routeProvider
                 .when('/news',
@@ -51,10 +51,10 @@ var teacherApp = angular.module('teacherApp',['ngRoute','pickadate','ngDialog','
                     controller:'coursesEditController',
                     templateUrl:'/js/admin/app/views/courses/coursesEdit.html'
                 })
-                .when('/coursesPlots/:itemId',
+                .when('/coursesEmail/:itemId',
                 {
-                    controller:'coursesPlotController',
-                    templateUrl:'/js/admin/app/views/courses/coursesPlot.html'
+                    controller:'coursesEmailController',
+                    templateUrl:'/js/admin/app/views/courses/coursesEmail.html'
                 })
                 .when('/homeworks',
                 {
@@ -101,6 +101,12 @@ var teacherApp = angular.module('teacherApp',['ngRoute','pickadate','ngDialog','
                     templateUrl:'/js/admin/app/views/students/studentsPlot.html',
                     foodata: 'course_id'
                 })
+                .when('/students/studentEmail/:itemId',
+                {
+                    controller:'studentsEmailController',
+                    templateUrl:'/js/admin/app/views/students/studentsEmail.html',
+                    foodata: 'course_id'
+                })
                 .when('/exams',
                 {
                     controller:'examsController',
@@ -130,6 +136,27 @@ var teacherApp = angular.module('teacherApp',['ngRoute','pickadate','ngDialog','
                     templateUrl:'/js/admin/app/views/exams/grades/grades.html',
                     foodata: 'grades'
                 })
+                .when('/photos',
+                {
+                    controller:'photoController',
+                    templateUrl:'/js/admin/app/views/photo/photo.html'
+                })
+                .when('/resume',
+                {
+                    controller:'resumeController',
+                    templateUrl:'/js/admin/app/views/resume/resume.html'
+                })
+                .when('/farsi',
+                {
+                    controller:'farsiController',
+                    templateUrl:'/js/admin/app/views/farsi/farsi.html'
+                })
+                .when('/',
+                {
+                    controller:'MainController',
+                    templateUrl:'/js/admin/app/views/main/main.html',
+                    foodata: 'grades'
+                })
                 ;
 
         })
@@ -142,4 +169,10 @@ var teacherApp = angular.module('teacherApp',['ngRoute','pickadate','ngDialog','
                 }
                 return data;
             }
-        });
+        })
+
+        .filter('htmlToPlaintext', function() {
+            return function(text) {
+                return String(text).replace(/<[^>]+>/gm, '');
+            }
+        })

@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group">
                         <label>Description : </label>
-                        <textarea class="form-control" rows="10" name="editor1" id="editor1" ng-model="news.description">{{news.description}}</textarea>
+                        <textarea id="editor1" ui-tinymce="tinymceOptions" ng-model="news.description">{{news.description}}</textarea>
                     </div>
                     <button type="submit" class="btn btn-default">Submit Button</button>
                     <a href="#news" ng-click="cancelEdit()" class="btn btn-default">Cancel Button</a>

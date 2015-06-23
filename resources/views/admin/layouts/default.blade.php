@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Quantech Admin Panel</title>
+    <title> Comega Academic Admin Panel</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/admin/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
@@ -16,7 +16,7 @@
     <link href="{{asset('css/angular-chart.css')}}" rel="stylesheet">
     @yield('css')
     <!-- Custom Fonts -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
        <!--[if lt IE 9]>
@@ -66,7 +66,7 @@
     <script src="{{asset('js/ngDialog.min.js')}}"></script>
     <script src="{{asset('js/Chart.min.js')}}"></script>
     <script src="{{asset('js/angular-chart.min.js')}}"></script>
-
+    <script src="{{asset('js/admin/tinymce-ui.js')}}"></script>
 
 {{--    <script src="{{asset('js/angular-file-upload.min.js')}}"></script>--}}
 

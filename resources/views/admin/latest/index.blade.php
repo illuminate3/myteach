@@ -24,5 +24,5 @@
     <script src="{{asset('js/admin/app/controller/newsEditController.js')}}"></script>
     <script src="{{asset('js/admin/app/controller/newsCreateController.js')}}"></script>
     <script src="{{asset('js/tinymce/js/tinymce/tinymce.min.js')}}"></script>
-    <script src="{{asset('js/admin/tinyeditor.js')}}"></script>
+
 @endsection

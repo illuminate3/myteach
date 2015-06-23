@@ -1,0 +1,19 @@
+<!-- main content -->
+<section class="col-sm-8 maincontent" ng-bind-html="homepage.description">
+
+</section>
+<!-- /main -->
+
+<!-- Sidebar -->
+<aside class="col-sm-4 sidebar sidebar-right">
+
+    <div class="panel">
+        <h4>Latest News</h4>
+        <ul class="list-unstyled list-spaces">
+            <li ng-repeat="new in news"><a ng-href="#/latest_news/{{new.id}}">{{new.title}}</a><br>
+                <span class="small text-muted">{{ new.intro }}</span></li>
+
+        </ul>
+    </div>
+
+</aside>

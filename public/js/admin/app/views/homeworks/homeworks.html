@@ -81,7 +81,7 @@
                         <input type="checkbox" id="cb0" name="cid[]" ng-change="selectedItems()" ng-model="homework.checked" title="Checkbox for row {{index + 1}} ">
                     </td>
                     <td>{{homework.title | limitTo:30}}....</td>
-                    <td>{{homework.description | limitTo:80 }}</td>
+                    <td>{{homework.description | htmlToPlaintext |limitTo:80 }}</td>
                     <td>{{homework.created_at }}</td>
                     <td style="text-align: center" class="input-sm">
                                 <span ng-click="active(homework.id)" ng-model="homework.active"  class="{{ homework.active == 1 ? 'btn btn-success btn-circle' : 'btn btn-danger btn-circle'}}">

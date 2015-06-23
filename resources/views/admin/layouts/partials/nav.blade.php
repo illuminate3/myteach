@@ -7,21 +7,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Teacher's Admin Site</a>
+                <a class="navbar-brand" href="">{{\Auth::user()->name . '\'s' }} Admin Site</a>
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
                        <span>
-                       {{--{{Auth::teacher()->user()->email}}--}}Teacher Email
+                       {{Auth::user()->email}}
                        </span>
-                       <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                       <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="{!! url('logoutTeacher') !!}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="{!! url('logout') !!}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

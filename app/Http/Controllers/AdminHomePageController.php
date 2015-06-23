@@ -16,12 +16,25 @@ class AdminHomePageController extends Controller {
 	 */
 	public function index()
 	{
-        $page = Page::whereTitle('home')->first();
+//        $page = Page::whereTitle('home')->first();
+//        if(! $page){
+//            $page=nulls;
+//        }
+
+		return view('admin.home.index');
+
+
+	}
+	public function pages($item)
+	{
+
+        $page = Page::whereTitle($item)->first();
         if(! $page){
-            $page=null;
+            $page='';
+            return $page;
         }
 
-		return view('admin.home.index',compact('page'));
+		return $page->description;
 
 
 	}
@@ -42,20 +55,20 @@ class AdminHomePageController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store($item)
 	{
         $input=[];
-        $desc = $input = Request::get('editor1');
-        $title = 'home';
-        $page = Page::whereTitle('home')->first();
+        $desc = $input = Request::get('description');
+        $title = $item;
+        $page = Page::whereTitle($item)->first();
         if(! $page){
             $page = new Page();
         }
         $page->description=$desc;
         $page->title=$title;
         $page->save();
-        Flash::message('Your homepage updated successfully');
-        return Redirect::back();
+
+        return 'true';
 	}
 
 	/**

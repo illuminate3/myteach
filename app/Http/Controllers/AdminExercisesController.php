@@ -49,7 +49,7 @@ class AdminExercisesController extends Controller {
             return 'true';
         }else{
             $input = Request::all();
-            $input['file'] = '/storage/'.$input['file'];
+            $input['file'] = 'homeworks/'.$input['file'];
             return Homework::create($input);
         }
 

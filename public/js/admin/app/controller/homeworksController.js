@@ -22,8 +22,8 @@ angular.module('teacherApp')
         };
 
         $scope.homeworks = [];
-        $scope.order = 'title';
-        $scope.reverse = false;
+        $scope.order = 'created_at';
+        $scope.reverse = true;
         $scope.itemSelected='10';
 
         $scope.createHomework = function () {

@@ -25,7 +25,7 @@ angular.module('teacherApp')
         $scope.students = [];
         $scope.order = 'created_at';
         $scope.reverse = true;
-        $scope.itemSelected='10';
+        $scope.itemSelected='100';
 
         $scope.createStudent = function () {
             $window.location.href = '#students/create/' + $scope.courseSelected;

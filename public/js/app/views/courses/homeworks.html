@@ -1,0 +1,32 @@
+<!-- main content -->
+<div class="panel" style="margin: 3em;">
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th >
+                        Number
+                    </th>
+                    <th >
+                        Title
+                    </th>
+                <tbody >
+                    <!--@foreach($packages->all() as $i=>$package)-->
+                    <tr ng-repeat="(index,homework) in homeworks | filter:itemFilter | orderBy:order:reverse | limitTo:itemSelected   "  >
+
+                        <td >{{ index + 1 }}</td>
+                        <td><a ng-href="#/exercise/{{homework.id}}">{{homework.title }}</a></td>
+
+                    </tr>
+                <!--@endforeach-->
+                </tbody>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <p >
+        <span style="margin-top:2em " class="btn fa fa-reply" ng-click="back()" > return</span>
+    </p>
+</div>

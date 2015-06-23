@@ -64,10 +64,10 @@
                 <div class="col-sm-6" id="" style="margin-bottom: .5em " >
                     <label>
                         <select name="item"  class="form-control input-sm" ng-model="itemSelected">
-                            <option value="10" selected="selected">10</option>
+                            <option value="10" >10</option>
                             <option value="25">25</option>
                             <option value="50">50</option>
-                            <option value="100">100</option>
+                            <option value="100" selected="selected">100</option>
                             <option value="200">200</option>
                         </select>records per page
                     </label>
@@ -128,6 +128,7 @@
                     <a href="{{'#/students/edit/'+ student.id}}" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> Edit</a>
                     <span  ng-click="deleteItem(student.id)" class="btn btn-danger btn-mini"><i class="icon-white icon-heart"></i> Delete</span>
                     <a href="{{'#/students/plot/'+ student.id}}" class="btn btn-warning btn-mini"><i class="icon-white icon-heart"></i> Plot</a>
+                    <a href="{{'#/students/studentEmail/'+ student.id}}" class="btn btn-info btn-mini"><i class="icon-white icon-heart"></i> Email </a>
                     <!--{{--{{Form::open(['url'=>'admin/packages'.'/'."$package->id",'method'=>'Delete'])}}--}}-->
                     <!--{{--<input style="float: left;margin-right: 1em;" type="submit" class="btn btn-danger btn-mini" value="Delete" onclick="return window.confirm('Are you Sure you want to delete this item?')"/>--}}-->
                     <!--{{--{{Form::close()}}--}}-->

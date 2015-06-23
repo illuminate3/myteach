@@ -1,0 +1,26 @@
+<!-- main content -->
+
+<div class="row" style="margin: 1em 0">
+    <h2>{{exercise.title}}</h2>
+</div>
+
+<div class="row">
+    <div>
+    <section class="col-sm-12 maincontent" ng-bind-html="exercise.description">
+
+    </section>
+    </div>
+
+
+
+</div>
+
+<div ng-if="exercise.file != null " style="margin: 2em 0 1em 0;" class="text-danger fa-bold">
+    <span>See exercise's file : </span>
+    <a ng-href="/{{exercise.file}}" target="_blank"> Click here! </a>
+</div>
+
+<p >
+    <span style="margin-top:2em " class="btn fa fa-reply" ng-click="back()" > return</span>
+</p>
+

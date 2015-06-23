@@ -1,0 +1,24 @@
+<!-- main content -->
+
+<div class="row" style="margin: 1em 0">
+    <h2>{{lesson.title}}</h2>
+    <span class="  text-danger">{{ lesson.intro }}</span>
+</div>
+
+<div class="row">
+    <div>
+    <section class="col-sm-12 maincontent" ng-bind-html="lesson.description">
+
+    </section>
+    </div>
+
+    <p >
+        <span style="margin-top:2em " class="btn fa fa-reply" ng-click="back()" > return</span>
+    </p>
+
+
+</div>
+
+
+
+

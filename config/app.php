@@ -146,6 +146,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
+        'Pqb\FilemanagerLaravel\FilemanagerLaravelServiceProvider',
 
 	],
 
@@ -194,7 +195,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-        'Flash'     => 'Laracasts\Flash\Flash'
+        'Flash'     => 'Laracasts\Flash\Flash',
+        'FilemanagerLaravel' => 'Pqb\FilemanagerLaravel\Facades\FilemanagerLaravel',
 
 	],
 

@@ -1,0 +1,35 @@
+
+    <div class="col-sm-9">
+        <div class="panel panel-default">
+            <!--<div class="panel-heading">-->
+                <!--Edit {{news.title}}-->
+            <!--</div>-->
+            <div class="panel-body">
+
+                <form role="form" ng-submit="submitForm()">
+
+                    <div class="form-group">
+
+                        <h3><strong>{{'Name : '}} <mark>{{ students.name}}</mark> {{ '  Family : ' }} <mark>{{ students.family}}</mark></strong></h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label> Email's Subject :  </label>
+                        <input type="text" class="form-control" ng-model="students.subject"/>
+                    </div>
+                    <div class="form-group">
+                        <label> Email's Text : </label>
+                        <textarea type="text" class="form-control" ng-model="students.body" rows="20">
+
+                        </textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">Submit Button</button>
+                        <span ng-click="cancelEdit()" class="btn btn-default">Cancel Button</span>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>

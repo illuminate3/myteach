@@ -2,8 +2,8 @@
  angular.module('teacherApp')
     .controller('newsController',function($scope,$http,newsFactory,messageFactory,$filter){
          $scope.news = [];
-         $scope.order = 'title';
-         $scope.reverse = false;
+         $scope.order = 'created_at';
+         $scope.reverse = true;
          $scope.itemSelected='10';
          function init(){
                 newsFactory.getNews()

@@ -1,0 +1,42 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Gallery</div>
+    <div class="panel-body">
+        <form action="">
+            <div class="form-group col-md-6 col-md-offset-1" >
+                <p class="alert-danger">{{ErrorssMainSlideShow}}</p>
+
+                <label>Upload Photo  </label>
+                <span class="btn btn-default ">
+                    <input type="file"  name="file" onchange="angular.element(this).scope().uploadFileMainSlideShow(this.files)"/>
+                </span>
+
+                <span class="glyphicon glyphicon-refresh spinning" ng-show="loadingMainSlideShow"></span>
+                <span ng-show="loadingMainSlideShow" >Uploading...</span>
+
+                <span class="alert-success">{{messageSuccessMainSlideShow}}</span>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div ng-repeat="img in images" class="col-md-4 " style="margin-bottom: 2em;">
+                <img  ng-src="{{img.photo}}" alt="" class="img img-rounded img-responsive img-thumbnail" width="100%"/>
+               <span>
+                   <button class="btn btn-danger" ng-click="removeSlideShow(img)">x</button>
+                   <span class="btn btn-info">
+                       <form action="">
+                           <input type="file" ng-model="img" id="{{img.id}}" multiple onchange="angular.element(this).scope().uploadFileMainSlideShowEdit(this.files,this.id)" />
+                           <span class="glyphicon glyphicon-refresh spinning" ng-show="loadingMainSlideShowEdit"></span>
+                           <span ng-show="loadingMainSlideShowEdit" >Uploading...</span>
+                           <span class="alert-success">{{messageSuccessMainSlideShowEdit}}</span>
+                       </form>
+                   </span>
+               </span>
+
+            </div>
+        </div>
+    </div>
+
+</div>

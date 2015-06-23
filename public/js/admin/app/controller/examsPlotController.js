@@ -34,21 +34,26 @@
              $scope.average = (sum / exam_grades.length).toFixed(2);
 
          }
-         function init(item){
-             examsFactory.getSingleExams(item)
-                 .success(function(data){
-                     $scope.exams = data;
-                     console.log(data);
-                 });
+         var plotsData = function () {
              $http.get('/admin/exams/grades/'+ item)
                  .success(function (data) {
-                    $scope.plotData = data;
+                     $scope.plotData = data;
                      //console.log(data);
                      initPlotsData();
                      if(exam_grades.length > 1){
                          calAverageGrade();
                      }
+
                  });
+         }
+         function init(item){
+             examsFactory.getSingleExams(item)
+                 .success(function(data){
+                     $scope.exams = data;
+                     console.log(data);
+                     plotsData();
+                 });
+
 
          }
          init(item);

@@ -134,4 +134,15 @@ class AdminStudentsController extends Controller {
         return $student->exam_student()->wherePresent(0)->with('exams','exams.course.book')->orderBy('created_at')->get();//with('students')->get();
     }
 
+    public function email($id){
+        $subject = Request::get('subject');
+        $body = Request::get('body');
+        $student = Student::findOrFail($id);
+
+        \Mail::send(['text' => 'admin.emails.student'], ['description'=>$body], function($message) use ($student,$subject){
+            $message->to($student->email, $student->family)->subject($subject);
+        });
+        return 'true';
+    }
+
 }

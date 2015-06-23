@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Student;
 use Request;
 use App\Course;
 
@@ -24,6 +25,20 @@ class AdminCoursesController extends Controller {
         $course = Course::findOrFail($id);
         $course->active = ! $course->active;
         $course->save();
+        return 'true';
+    }
+
+    public function email($id){
+        $subject = Request::get('subject');
+        $body = Request::get('body');
+        $students = Student::whereCourse_id($id)->get(['email']);
+
+        foreach ($students as $student) {
+           // $msg = preg_replace(['/\$email/','/\$name/','/\$family/','/\$grade/'], [$student->email,$student->name,$student->family,$student->grade], $description);
+            \Mail::send(['text' => 'admin.emails.course'], ['description'=>$body], function($message) use ($student,$subject){
+                $message->to($student->email, $student->family)->subject($subject);
+            });
+        }
         return 'true';
     }
 

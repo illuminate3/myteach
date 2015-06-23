@@ -1,0 +1,30 @@
+<!-- main content -->
+
+<div class="row" style="margin: 1em 0">
+    <h2>{{cv.title}}</h2>
+</div>
+
+<div class="row">
+    <section class="col-sm-12 maincontent" ng-bind-html="cv.description">
+
+    </section>
+
+    <p >
+        <span style="margin-top:2em " class="btn fa fa-reply" ng-click="back()" > return</span>
+    </p>
+</div>
+
+<!-- /main -->
+
+<!--<aside class="col-sm-4 sidebar sidebar-right">-->
+
+    <!--<div class="panel">-->
+        <!--<h4>Latest News</h4>-->
+        <!--<ul class="list-unstyled list-spaces">-->
+            <!--<li ng-repeat="new in cv"><a href="">{{new.title}}</a><br>-->
+                <!--<span class="small text-muted">{{ new.intro }}</span></li>-->
+
+        <!--</ul>-->
+    <!--</div>-->
+
+<!--</aside>-->

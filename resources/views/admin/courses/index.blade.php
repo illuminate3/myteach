@@ -26,6 +26,7 @@
     <script src="{{asset('js/admin/app/services/messageFactory.js')}}"></script>
     <script src="{{asset('js/admin/app/controller/booksEditController.js')}}"></script>
     <script src="{{asset('js/admin/app/controller/coursesEditController.js')}}"></script>
+    <script src="{{asset('js/admin/app/controller/coursesEmailController.js')}}"></script>
     <script src="{{asset('js/admin/app/controller/booksCreateController.js')}}"></script>
     <script src="{{asset('js/admin/app/controller/coursesCreateController.js')}}"></script>
     <script src="{{asset('js/tinymce/js/tinymce/tinymce.min.js')}}"></script>

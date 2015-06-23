@@ -1,21 +1,42 @@
 <?php
 
+Route::group(array('middleware' => 'auth'), function(){
+    Route::controller('filemanager', 'FilemanagerLaravelController');
+});
+
+Route::get('/', 'PagesController@index');
+Route::get('/cv', 'PagesController@cvPage');
+Route::get('/persian', 'PagesController@persianPage');
+Route::get('/pages/home', 'PagesController@home');
+Route::get('/pages/cv', 'PagesController@cv');
+Route::get('/pages/persian', 'PagesController@persian');
+Route::get('/pages/news', 'PagesController@news');
+Route::get('/pages/news/{id}', 'PagesController@showNews');
+
+Route::get('/courses', 'CoursesController@index');
+Route::get('/courses/all', 'CoursesController@all');
+Route::get('/homeworks/{id}', 'HomeworksController@show');
+Route::get('/exercise/{id}', 'HomeworksController@exercise');
+Route::get('/lesson/{id}', 'LessonsController@show');
+
+Route::get('/gallery', 'GalleryController@index');
+
+
+
+
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Admin Section
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
 */
+Route::get('adminLogin',array('middleware' => 'guest','uses'=>'SessionController@login'));
+Route::post('adminLogin','SessionController@valid');
+Route::get('logout',array('middleware'=>['adminAuth'],'uses'=>'SessionController@destroy'));
 
-Route::get('/', 'PagesController@home');
-
-Route::group(array('prefix' => 'admin'/*,'before'=>'AdminFilter'*/),function(){
+Route::group(array('prefix' => 'admin','middleware'=>['adminAuth']),function(){
     Route::get('/', 'AdminHomePageController@index');
-    Route::post('/', 'AdminHomePageController@store');
+    Route::post('/{item}', 'AdminHomePageController@store');
+    Route::get('/pages/{item}', 'AdminHomePageController@pages');
     Route::get('/latest', 'AdminLatestNewsController@index');
     Route::post('/latest/activeAll', 'AdminLatestNewsController@activeAll');
     Route::post('/latest/deleteAll', 'AdminLatestNewsController@deleteAll');
@@ -30,6 +51,7 @@ Route::group(array('prefix' => 'admin'/*,'before'=>'AdminFilter'*/),function(){
     Route::post('/courses/activeAll', 'AdminCoursesController@activeAll');
     Route::post('/courses/deleteAll', 'AdminCoursesController@deleteAll');
     Route::get('/courses/active/{id}', 'AdminCoursesController@active');
+    Route::post('/coursesEmail/{id}', 'AdminCoursesController@email');
     Route::resource('/courses', 'AdminCoursesController');
     Route::get('/courses', 'AdminCoursesController@pages');
     Route::get('/books', 'AdminBooksController@index');
@@ -55,6 +77,7 @@ Route::group(array('prefix' => 'admin'/*,'before'=>'AdminFilter'*/),function(){
     Route::post('/students/activeAll', 'AdminStudentsController@activeAll');
     Route::post('/students/deleteAll', 'AdminStudentsController@deleteAll');
     Route::get('/students/grades/{id}', 'AdminStudentsController@grades');
+    Route::post('/studentsEmail/{id}', 'AdminStudentsController@email');
     Route::resource('/students','AdminStudentsController');
     Route::get('/students', 'AdminStudentsController@pages');
 
@@ -69,6 +92,13 @@ Route::group(array('prefix' => 'admin'/*,'before'=>'AdminFilter'*/),function(){
     Route::get('/grades/present/{student_id}/{exam_id}','AdminExamsGradesController@present');
     Route::post('grades','AdminExamsGradesController@store');
     Route::post('grades/emailAll','AdminExamsGradesController@emailAll');
+
+    Route::get('/gallery/all', 'AdminGalleryController@all');
+    Route::post('/galleryEdit/{id}', 'AdminGalleryController@updateGallery');
+    Route::resource('/gallery','AdminGalleryController');
+
+    Route::get('/cv', 'AdminCvController@index');
+    Route::get('/persian', 'AdminPersianController@index');
 
 });
 
