@@ -1,31 +1,22 @@
 @extends('layouts.default')
 
 @section('head')
-    {{--<link rel="stylesheet" href="{{asset('css/isotope.css')}}">--}}
-    {{--<link rel="stylesheet" href="{{asset('css/jquery.fancybox.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
 @stop
 @section('container')
 
     <section class="container" style="margin: 3em 0;">
         <div class="col-md-12">
-            <div class="row">
-                <div class="portfolio-items isotopeWrapper clearfix" id="3">
+            <div class="row" >
+                <div class=" clearfix">
                     @foreach(array_chunk($gallery,3) as $image)
-                    <div class="row">
-                    @foreach($image as $photo)
-                    <article class="col-sm-4 isotopeItem webdesign">
-                        <div class="portfolio-item">
-                            <img src="{{asset($photo['photo'])}}" alt="" />
-                            <div class="portfolio-desc align-center">
-                                <div class="folio-info">
-                                    <a href="assets/images/portfolio/img1.jpg" class="fancybox">
-                                        <h5>Project Title</h5>
-                                        <i class="fa fa-link fa-2x"></i></a>
-                                </div>
-                            </div>
+                    <div class="row" style="margin-bottom: 2em;">
+                        @foreach($image as $photo)
+                        <div class="col-sm-4  "  >
+                                <a class="popup-link" href="{{asset($photo['photo'])}}"><img src="{{asset($photo['photo'])}}" alt="" /></a>
+
                         </div>
-                    </article>
-                    @endforeach
+                        @endforeach
 
                     </div>
                     @endforeach
@@ -37,8 +28,35 @@
 @stop
 
 @section('footer')
-{{--<script src="{{asset('js/jquery.cslider.js')}}"></script>--}}
-{{--<script src="{{asset('js/jquery.isotope.min.js')}}"></script>--}}
-{{--<script src="{{asset('js/jquery.fancybox.pack.js')}}"></script>--}}
-{{--<script src="{{asset('js/custom.js')}}"></script>--}}
+<script src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
+
+<script>
+
+    jQuery(document).ready(function() {
+    (function(){
+        //window.setInterval(function(){
+            jQuery('.popup-link').magnificPopup(
+                    {
+                        type: 'image',
+                        closeOnContentClick: true,
+                        closeBtnInside: false,
+                        fixedContentPos: true,
+                        mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+                        image: {
+                            verticalFit: true
+                        },
+                        zoom: {
+                            enabled: true,
+                            duration: 300 // don't foget to change the duration also in CSS
+                        }
+                    });
+        //}, 600);
+
+
+    })();
+
+       });
+
+</script>
+
 @stop
