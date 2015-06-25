@@ -44,12 +44,18 @@ var teacherApp = angular.module('teacherApp',['ngRoute','ngSanitize'])
                 templateUrl:'/js/app/views/courses/lesson.html'
             }
             )
-            .when('/exams',
+            .when('/quiz',
             {
                 controller:'ExamsController',
                 templateUrl:'/js/app/views/exams/exams.html'
             }
             )
+            .when('/quiz/:courseId',
+            {
+                controller:'ExamsController',
+                templateUrl:'/js/app/views/exams/exams.html',
+                foodata: 'course_id'
+            })
             .when('/',
             {
                 controller:'HomeController',

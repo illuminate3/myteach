@@ -1,21 +1,20 @@
 <?php namespace App\Http\Controllers;
 
-use App\Exam;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class ExamsController extends Controller {
+class GradesController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($id)
 	{
-		return view('exams.index');
+		return view('grades.index',['id'=>$id]);
 	}
 
 	/**
@@ -46,7 +45,7 @@ class ExamsController extends Controller {
 	 */
 	public function show($id)
 	{
-		return Exam::whereCourse_id($id)->whereActive(1)->get();
+		//
 	}
 
 	/**

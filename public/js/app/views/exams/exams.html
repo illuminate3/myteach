@@ -1,0 +1,66 @@
+<div class="col-sm-12" style="margin-bottom: 3em;padding: 1.5em 0;border-bottom: 2px dashed #e3e3e3">
+    <div ng-show="success.show"  class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        {{success.msg}}
+    </div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-sm-12 ">
+                <label class="fa-bold">  Select Course : </label>
+                <select name="exams" id="exams" ng-model="courseSelected" class="form-control" ng-change="courseChange()">
+                    <option ng-repeat="course in courses | orderBy:'year':true" value="{{course.id}}" ng-selected="course.id == courseSelected ? 'selected' : ''">{{course.book.title}}-{{course.year}}-{{course.semester}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="panel panel-info" ng-show="showExam" style="margin-bottom: 3em">
+        <div class=" table-responsive panel-body">
+            <table class="table table-striped ">
+
+                <div class="row" style="margin: 2em 0;">
+                    <div id="filter" class=" col-sm-12" ng-if="exams.length > 0">
+                        <a ng-href="/courses/grades/{{courseSelected}}" class="btn btn-danger btn-lg"><strong> See Your Grades In This Exams!</strong> </a>
+                    </div>
+                </div>
+                <div class="row" style="margin: 2em 0;">
+                    <div id="filter" class=" col-sm-12" ng-if=" exams.length == 0">
+                        <span class="btn btn-lg "> There is no exam yet! </span> </a>
+                    </div>
+                </div>
+
+                <thead>
+                <tr>
+                    <th ng-click="sort('title')">Exam's Title
+                        <span ng-show='order === "title" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                        <span ng-show='order === "title" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                    </th>
+                    <th ng-click="sort('date')">Exam's Date
+                        <span ng-show='order === "date" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                        <span ng-show='order === "date" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                    </th>
+                    <th style="text-align: center" ng-click="sort('high_score')">High Score
+                        <span ng-show='order === "high_score" && !reverse' class="glyphicon glyphicon-chevron-down"></span>
+                        <span ng-show='order === "high_score" && reverse' class="glyphicon glyphicon-chevron-up"></span>
+                    </th>
+                </tr>
+
+                </thead>
+                <tbody >
+                <!--@foreach($packages->all() as $i=>$package)-->
+                <tr ng-repeat="(index,exam) in exams | orderBy:order:reverse  "  >
+
+                    <td>{{exam.title }}</td>
+                    <td>{{exam.date  }}</td>
+                    <td style="text-align: center">{{exam.high_score  }}</td>
+
+                </tr>
+                <!--@endforeach-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

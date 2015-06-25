@@ -20,6 +20,9 @@ Route::get('/exercise/{id}', 'HomeworksController@exercise');
 Route::get('/lesson/{id}', 'LessonsController@show');
 
 Route::get('/exams', 'ExamsController@index');
+Route::get('/exams/{id}', 'ExamsController@show');
+
+Route::get('/courses/grades/{id}', 'GradesController@index');
 
 Route::get('/gallery', 'GalleryController@index');
 
