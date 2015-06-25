@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+           View Messages
+        </h1>
+        <!--<ol class="breadcrumb">-->
+        <!--<li>-->
+        <!--<i class="fa fa-dashboard"></i>  <a href="/adminmaster">شکل فریم عینک</a>-->
+        <!--</li>-->
+
+        <!--</ol>-->
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-8 col-sm-push-2">
+        <div class="panel panel-default">
+            <!--<div class="panel-heading">-->
+            <!--Edit {{news.title}}-->
+            <!--</div>-->
+            <div class="panel-body">
+
+
+                <form role="form" enctype="multipart/form-data" ng-submit="submitForm()">
+
+                         <input type="hidden" name="user_id" ng-model='message.id' value="{{message.id}}">
+
+                        <div class="form-group" >
+                            <label>Name : </label>
+                            <input class="form-control"  ng-model='message.name' value="{{message.name}} ">
+                        </div>
+
+                        <div class="form-group" >
+                            <label>Subject Of Message : </label>
+                            <input class="form-control"  ng-model='message.subject' value="{{message.subject}} ">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 3.2em">
+                            <label>Massage : </label>
+                            <textarea class="form-control" ng-model='message.message' rows="12">
+                                {{message.message}}
+                            </textarea>
+                        </div>
+                    <hr/>
+                        <div class="form-group">
+                            <label class="text-info">Subject Of Answer :</label>
+                            <input class="form-control" ng-required="true" ng-model='message.subject_answer' value="{{message.subject_answer}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="text-info">Massage :</label>
+                            <textarea class="form-control" ng-required="true" ng-model='message.message_answer' rows="12">
+                                {{message.message_answer}}
+                            </textarea>
+
+                            <p>
+                                <span class="glyphicon glyphicon-refresh spinning" ng-show="loading"></span>
+                                <span ng-show="loading" >Sending Email...</span>
+                                <span class="alert-success">{{messageSuccess}}</span>
+                            </p>
+                        </div>
+
+                    <button type="submit" class="btn btn-default">Send Answer</button>
+                    <a href="#messages" ng-click="cancelView()" class="btn btn-default">cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

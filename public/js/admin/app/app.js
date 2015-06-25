@@ -151,6 +151,16 @@ var teacherApp = angular.module('teacherApp',['ngRoute','pickadate','ngDialog','
                     controller:'farsiController',
                     templateUrl:'/js/admin/app/views/farsi/farsi.html'
                 })
+                .when('/messages',
+                {
+                    controller:'contactController',
+                    templateUrl:'/js/admin/app/views/contact/contact.html'
+                })
+                .when('/messages/:itemId',
+                {
+                    controller:'contactViewController',
+                    templateUrl:'/js/admin/app/views/contact/view.html'
+                })
                 .when('/',
                 {
                     controller:'MainController',

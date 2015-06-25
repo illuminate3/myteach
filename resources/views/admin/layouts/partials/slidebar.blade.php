@@ -53,6 +53,9 @@
                         <li>
                             <a href="/admin/persian/#/farsi" {{\Request::is('admin/persian') ? 'class=active' : ''}} >Parsi </a>
                         </li>
+                        <li>
+                            <a href="/admin/contact/#/messages" {{\Request::is('admin/contact') ? 'class=active' : ''}} >Messages <span class=" label label-danger pull-right"> {{\App\Contact::whereChecked('0')->count() ?: '0' }} </span> </a>
+                        </li>
 
                     </ul>
                 </div>

@@ -71,6 +71,7 @@
 {{--    <script src="{{asset('js/angular-file-upload.min.js')}}"></script>--}}
 
     <script src="{{asset('js/admin/app/app.js')}}"></script>
+
     <script src="{{asset('js/admin/app/controller/newsController.js')}}"></script>
 
     @yield('js')

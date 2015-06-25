@@ -137,6 +137,8 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 
 
+
+
 		/*
 		 * Application Service Providers...
 		 */

@@ -10,10 +10,9 @@
                 <ul class="nav navbar-nav pull-right mainNav">
                     <li {{\Request::is('/') ? 'class=active' : ''}}><a href="/#/">Home</a></li>
 					<li {{\Request::is('courses') ? 'class=active' : ''}}><a href="/courses/#courses" >Courses</a></li>
-                    <li {{\Request::is('gallery') ? 'class=active' : ''}}><a href="/gallery">Gallery</a></li>
+                    <li {{\Request::is('exams') ? 'class=active' : ''}}><a href="/exams/#/quiz">Exams</a></li>
                     <li {{\Request::is('cv') ? 'class=active' : ''}}><a href="/cv/#/resume">Cv</a></li>
-                   	<li {{\Request::is('persian') ? 'class=active' : ''}}><a href="/persian/#/farsi">پارسی</a></li>
-					<li><a href="videos.html">Videos</a></li>
+                    <li {{\Request::is('gallery') ? 'class=active' : ''}}><a href="/gallery">Gallery</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -23,7 +22,8 @@
                             <li><a href="#">Dummy Link3</a></li>
                         </ul>
                     </li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li {{\Request::is('contact') ? 'class=active' : ''}}> <a href="/contact">Contact</a></li>
+                   	<li {{\Request::is('persian') ? 'class=active' : ''}}><a href="/persian/#/farsi">پارسی</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->

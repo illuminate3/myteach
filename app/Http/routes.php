@@ -19,7 +19,12 @@ Route::get('/homeworks/{id}', 'HomeworksController@show');
 Route::get('/exercise/{id}', 'HomeworksController@exercise');
 Route::get('/lesson/{id}', 'LessonsController@show');
 
+Route::get('/exams', 'ExamsController@index');
+
 Route::get('/gallery', 'GalleryController@index');
+
+Route::get('/contact', 'ContactController@index');
+Route::post('/contact', 'ContactController@store');
 
 
 
@@ -99,6 +104,10 @@ Route::group(array('prefix' => 'admin','middleware'=>['adminAuth']),function(){
 
     Route::get('/cv', 'AdminCvController@index');
     Route::get('/persian', 'AdminPersianController@index');
+
+    Route::get('/contact', 'AdminContactController@index');
+    Route::get('/contact/all', 'AdminContactController@all');
+    Route::resource('/contact','AdminContactController');
 
 });
 
