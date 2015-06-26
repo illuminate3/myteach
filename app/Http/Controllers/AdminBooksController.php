@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-//use App\Http\Requests;
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Request;
@@ -35,7 +35,8 @@ class AdminBooksController extends Controller {
 	 */
 	public function store()
 	{
-        return Book::create(Request::all());
+        return 'sadsfasdf';
+        //return Book::create(Request::all());
 	}
 
 	/**

@@ -23,7 +23,7 @@
          };
 
 
-         $scope.formData.description = '';
+         //$scope.formData.description = '';
 
          $scope.tinymceOptions = {
 

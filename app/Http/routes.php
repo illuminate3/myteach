@@ -21,6 +21,7 @@ Route::get('/lesson/{id}', 'LessonsController@show');
 
 Route::get('/exams', 'ExamsController@index');
 Route::get('/exams/{id}', 'ExamsController@show');
+Route::post('/courses/grades/getPassword/{id}','ExamsController@getPassword');
 
 Route::get('/courses/grades/{id}', 'GradesController@index');
 
@@ -42,9 +43,7 @@ Route::post('adminLogin','SessionController@valid');
 Route::get('logout',array('middleware'=>['adminAuth'],'uses'=>'SessionController@destroy'));
 
 Route::group(array('prefix' => 'admin','middleware'=>['adminAuth']),function(){
-    Route::get('/', 'AdminHomePageController@index');
-    Route::post('/{item}', 'AdminHomePageController@store');
-    Route::get('/pages/{item}', 'AdminHomePageController@pages');
+
     Route::get('/latest', 'AdminLatestNewsController@index');
     Route::post('/latest/activeAll', 'AdminLatestNewsController@activeAll');
     Route::post('/latest/deleteAll', 'AdminLatestNewsController@deleteAll');
@@ -111,6 +110,12 @@ Route::group(array('prefix' => 'admin','middleware'=>['adminAuth']),function(){
     Route::get('/contact', 'AdminContactController@index');
     Route::get('/contact/all', 'AdminContactController@all');
     Route::resource('/contact','AdminContactController');
+
+
+
+    Route::get('/', 'AdminHomePageController@index');
+    Route::post('/{item}', 'AdminHomePageController@store');
+    Route::get('/pages/{item}', 'AdminHomePageController@pages');
 
 });
 
